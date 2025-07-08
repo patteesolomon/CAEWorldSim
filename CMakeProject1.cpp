@@ -6,9 +6,7 @@
 
 using namespace std;
 
-int main()
-{
-	addEntity(2);
+int main() {
 	cout << "Hello CMake." << endl;
 	return 0;
 }

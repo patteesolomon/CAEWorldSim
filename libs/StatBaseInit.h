@@ -35,7 +35,7 @@ public:
 	/// 
 	/// </summary>
 	/// 
-	int statbase[21] = {
+	int statbase[14] = {
 
 	};
 	~StatBaceInit();

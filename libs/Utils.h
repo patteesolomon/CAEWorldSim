@@ -25,7 +25,7 @@
 
 #define gameLoad = 0;
 
-template<typename T> void addEntity(T a) {
+template<typename T> void test(T a) {
 	switch (a)
 	{
 	default:
@@ -43,24 +43,39 @@ template<typename T> void addEntity(T a) {
 template<typename T> void concatToList(T arr[], T arrII[])
 {
 	int newcount = capacityCount(arr) + capacityCount(arrII);
-	T arrIII[newcount]{}; 
-	for each(T sa in arr)
+	T arrIII[newcount]{};
+	int i = 0;
+	for (T sa : arr)
 	{
-		arrIII[sa]; 
-	}
+		arrIII[i] = sa;
+		i++;
+	};
 
-	for each(T sa in arrII)
+	for (T sa : arrII)
 	{
-		arrIII[sa];
-	}
+		arrIII[i] = sa;
+		i++;
+	};
 }
 
 template<typename T> int capacityCount(T arr[])
 {
 	int count = 0;
-	for each(T var in arr)
+	for (T var : arr)
 	{
 		++count;
 	}
 	return count;
+} 
+
+template<typename T> void dijkstrasAlgo(T root, T next, T arr[])
+{ 
+	// root at dis of 0
+	// map this out as is following the 
+	// instructions
+	// then use recursion in an if clause
+	// then use the internet for an answer key
+	// then optimise it for a 3D array
+	T rnode = 0;
+	
 }

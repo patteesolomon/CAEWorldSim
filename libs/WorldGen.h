@@ -14,15 +14,15 @@ private:
 	
 public:  
 	enum class Enx : unsigned short int {
-		AEGESAN ,
-		TRIAD ,
-		REVERSE ,
+		AEGESAN,
+		HUMAN,
+		REVERSE,
 		WILDLIFE,
 		ROBOTIC,
 		HYBRID,
-		HACKER ,
+		HACKER,
 		MONSTER,
-		NPC ,
+		NPC,
 		DEFAULT
 	};
 	// event nested index type
@@ -32,7 +32,7 @@ public:
 	Enx enxType = Enx(9);
 
  	// world map
-	 WorldGen();
+	WorldGen();
 
 	void resizeMap() {
 		// resize

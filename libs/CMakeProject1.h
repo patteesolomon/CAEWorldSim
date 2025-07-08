@@ -10,5 +10,6 @@
 #include <vector> 
 #include <list> 
 #include <array>
+#include <algorithm>
 
 // TODO: Reference additional headers your program requires here.
