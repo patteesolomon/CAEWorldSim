@@ -12,7 +12,7 @@ endif()
 project ("CMakeProject1")
 
 # Add source to this project's executable.
-add_executable (CMakeProject1 "CMakeProject1.cpp" "libs/CMakeProject1.h" "WorldGen.cpp" "libs/WorldGen.h" "libs/StatBaseInit.h" "libs/Utils.h" "libs/UFI.h" "libs/Actor.h" "Actor.cpp" "libs/Entity.h")
+add_executable (CMakeProject1 "CMakeProject1.cpp" "libs/CMakeProject1.h" "WorldGen.cpp" "libs/WorldGen.h"  "libs/Utils.h" "libs/UFI.h"   "libs/Entity.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET CMakeProject1 PROPERTY CXX_STANDARD 20)

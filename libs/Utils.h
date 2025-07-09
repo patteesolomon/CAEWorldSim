@@ -9,10 +9,10 @@
 // class hierarchy of inheritance
 // Utils.h, EventUtils.h, TriggerList.h
 // \/
-// UFI, Entity, Org(Factions, player organization menu, Communication), Events
+// UFI, Entity(TerrainObjs, Actor(Player/Npc either foe or friend character), Enemy(baddie npc), Ally(friend npc not in party)UnitType), Org(Factions, player organization menu, Communication), Events
 //  |
 // \/
-// WorldGen, Actor(Player/Npc either foe or friend character), Enemy(baddie npc), Ally(friend npc not in party), GameTemp, UnitType, 
+// WorldGen, GameTemp
 // 
 // 
 ////
@@ -70,12 +70,12 @@ template<typename T> int capacityCount(T arr[])
 
 template<typename T> void dijkstrasAlgo(T root, T next, T arr[])
 { 
-	// root at dis of 0
+	// root at distance of 0
 	// map this out as is following the 
 	// instructions
 	// then use recursion in an if clause
 	// then use the internet for an answer key
 	// then optimise it for a 3D array
-	T rnode = 0;
+	int drnode = 0;
 	
 }
