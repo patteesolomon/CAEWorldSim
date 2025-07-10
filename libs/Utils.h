@@ -1,5 +1,7 @@
-#include "CMakeProject1.h"
-
+#include "CMakeProject1.h"// I WILL go over CMakeProject1.h libs and get rid of the ones I barely need there and distribute them
+#include <utility> 
+#include <cstdlib>
+#include <memory>
 //
 // use a closed hashmap when loading game data?
 // or something else
@@ -68,14 +70,37 @@ template<typename T> int capacityCount(T arr[])
 	return count;
 } 
 
-template<typename T> void dijkstrasAlgo(T root, T next, T arr[])
+template<typename T> void dijkstrasAlgo(T root, T target)
 { 
-	// root at distance of 0
+	// root at distance of the smallest.
 	// map this out as is following the 
 	// instructions
 	// then use recursion in an if clause
 	// then use the internet for an answer key
 	// then optimise it for a 3D array
-	int drnode = 0;
-	
+	int drnode = root.current;
+	T next = new T();
+	drnode = 1;
+	/// add a check for target distance comparison for each existing edge.
+	// any non visited nodes have the current distance 
+	// 
+	// what goes in the hole can zip up when using caution. But finees is key.
+	// 
+	while (root == true)
+	{
+		if (root.l)
+		{
+			drnode++;
+		}
+		if (root.r)
+		{
+			drnode++;
+		}
+		if (root.r > drnode) {
+			current = root.r
+		}
+		if (root.l > drnode) {
+			current = root.l
+		}
+	}
 }

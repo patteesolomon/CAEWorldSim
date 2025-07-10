@@ -143,5 +143,6 @@ public:
 #define magic = [];
 
 #define psionics = [];
-	 
+	Entity();
+	~Entity();
 };
