@@ -9,12 +9,12 @@
 ////
 // // and here I will model out the 
 // class hierarchy of inheritance
-// Utils.h, EventUtils.h, TriggerList.h
+// Utils.h,/ EventUtils.h, /TriggerList.h
 // \/
-// UFI, Entity(TerrainObjs, Actor(Player/Npc either foe or friend character), Enemy(baddie npc), Ally(friend npc not in party)UnitType), Org(Factions, player organization menu, Communication), Events
+// UFI,/ Entity(TerrainObjs, Actor(Player/Npc either foe or friend character), Enemy(baddie npc), Ally(friend npc not in party)UnitType), / Org(Factions, player organization menu, Communication), Events
 //  |
 // \/
-// WorldGen, GameTemp
+// WorldGen,/ GameTemp
 // 
 // 
 ////
@@ -42,7 +42,7 @@ template<typename T> void test(T a) {
 /// <typeparam name="T"></typeparam>
 /// <param name="arr"></param>
 /// <param name="arrII"></param>
-template<typename T> void concatToList(T arr[], T arrII[])
+template<typename T>T concatToArray(T arr[], T arrII[])
 {
 	int newcount = capacityCount(arr) + capacityCount(arrII);
 	T arrIII[newcount]{};
@@ -58,6 +58,7 @@ template<typename T> void concatToList(T arr[], T arrII[])
 		arrIII[i] = sa;
 		i++;
 	};
+	return arrIII;
 }
 
 template<typename T> int capacityCount(T arr[])
@@ -91,16 +92,16 @@ template<typename T> void dijkstrasAlgo(T root, T target)
 		if (root.l)
 		{
 			drnode++;
+			if (root.r > drnode) {
+				current = root.r
+			}
 		}
 		if (root.r)
 		{
 			drnode++;
-		}
-		if (root.r > drnode) {
-			current = root.r
-		}
-		if (root.l > drnode) {
-			current = root.l
+			if (root.l > drnode) {
+				current = root.l
+			}
 		}
 	}
 }

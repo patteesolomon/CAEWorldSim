@@ -4,6 +4,8 @@
 
 using namespace std;
 
+class Entity {
+private:
 #pragma region playerRequirements
 // These are all structs or props
 // name, 
@@ -18,17 +20,52 @@ using namespace std;
 // actionMod,
 // mapAndNav, 
 // menuAndCurrencies ///
- 
+#define stats [];
+	 
+string name = "";
+
+#define skills[];
+
+#define sts[];
+
+#define magic[];
+
+#define psionics[];
 #pragma endregion
 
 #pragma region enemyReqs
 ////spawn area
 // area type
-// 
+//  
+int statb[15] = {
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0
+};
+// copy inv over to statb
 #pragma endregion
 
 #pragma region item
+struct Item
+{
+	string name = "";
+	int quantity = 0;
+	int statbC[]; // the amount of ints that change the statbase
 
+};
+Item inventory[10] = {};
 #pragma endregion
 
 #pragma region org
@@ -65,10 +102,7 @@ using namespace std;
 
 #pragma region ResponceQueue
 
-#pragma endregion
-
-class Entity{
-private: 
+#pragma endregion 
 	
 	/// <summary>
 	/// a statBase array that is accessed
@@ -86,30 +120,8 @@ private:
 	/// </summary>
 	/// 
 	/// // is this a player
-		bool isPlayer = false;
+	bool isPlayer = false;
 
-		// statbase 16
-	unsigned int statbase[15] = {  
-		0, // health  
-		0, // special  
-		0, // fighter (aural) 
-		0, // abiliy (optained after every level) (you'll also obtain -ap- from special items, Bosses and TurnA clashes) f
-		0, // dynamic points (obtained after a Turn A clash for leveling) 
-
-		// battler statbase <- ap goes here
-		0, // attack 
-		0, // defence (armor based)
-		0, // speed  
-
-		// ability stats <- dp goes here
-		0, // agility
-		0, // dexterity
-		0, // intelligence
-		0, // spirit
-		0, // strength (also effects status)
-		0, // endurance (bodily based / also effects status)
-		0 // constitution (mental, body, soul, based / also effects status)
-	};
 	char pDid; // unique name and index finder for .yamlfiles
 	
 public:
@@ -121,28 +133,35 @@ public:
 		Air = 3,
 		Lightning = 4,
 		Phase = 5,
-		Bio = 6,
+		Life = 6,
 		Light = 7,
 		Dark = 8,
 		Normal = 9
-	};
-
+	}; 
 	enum class unitType {
-
+		ATYPE,
+		INTEGRITY, 
+		COMBATTANTI,
+		COMBATTANTII,
+		COMBATTANTIII,
+		DESTROYER,
+		RECON,
+		ARCHIVER,
+		SUPPORT,
+		COMMANDER,
+		HACKER,
+		MERCHANT,
+		LABORER,
+		CLERIC,
+		REPLICANT,
+		PSIONIC,
+		AGENT
 	};
-#define stats [];
-
-#define inventory []; 
-
-#define name = "";
-
-#define skills = [];
-
-#define sts = [];
-
-#define magic = [];
-
-#define psionics = [];
+	
+	void setStbv(int val, int i) {
+		this->statb[i] = val;
+	};
+	 
 	Entity();
 	~Entity();
 };
