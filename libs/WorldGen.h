@@ -49,7 +49,7 @@ public:
 		this->wm = { this->x, this->y, this->z };
 	}
 	void drawMap() {
-
+		
 	}
 	~WorldGen();
 };

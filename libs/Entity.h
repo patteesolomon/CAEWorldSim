@@ -18,10 +18,10 @@ private:
 // psionics (weights system),
 // terrainMod,
 // actionMod,
-// mapAndNav, 
+// mapAndNav,
 // menuAndCurrencies ///
 #define stats [];
-	 
+
 string name = "";
 
 #define skills[];
@@ -36,7 +36,7 @@ string name = "";
 #pragma region enemyReqs
 ////spawn area
 // area type
-//  
+//
 int statb[15] = {
 	0,
 	0,
@@ -94,7 +94,7 @@ Item inventory[10] = {};
 
 #pragma region Faction
 
-#pragma endregion 
+#pragma endregion
 
 #pragma region EventType
 
@@ -102,11 +102,11 @@ Item inventory[10] = {};
 
 #pragma region ResponceQueue
 
-#pragma endregion 
-	
+#pragma endregion
+
 	/// <summary>
 	/// a statBase array that is accessed
-	/// and we use getters and setters 
+	/// and we use getters and setters
 	/// for what we need.. just put that here
 	/// and add status effects with Hash/Map/Heap/Array/Stack/Queue
 	/// template functions:
@@ -116,14 +116,14 @@ Item inventory[10] = {};
 	/// Heap is for finding parts of funciton and vars to be used later
 	/// Stack is for fifo updates and pulling from the heap
 	/// Queue is for popping off Statuses using updates
-	/// 
+	///
 	/// </summary>
-	/// 
+	///
 	/// // is this a player
 	bool isPlayer = false;
 
 	char pDid; // unique name and index finder for .yamlfiles
-	
+
 public:
 	enum class elementType
 	{
@@ -137,10 +137,10 @@ public:
 		Light = 7,
 		Dark = 8,
 		Normal = 9
-	}; 
+	};
 	enum class unitType {
 		ATYPE,
-		INTEGRITY, 
+		INTEGRITY,
 		COMBATTANTI,
 		COMBATTANTII,
 		COMBATTANTIII,
@@ -157,11 +157,11 @@ public:
 		PSIONIC,
 		AGENT
 	};
-	
+
 	void setStbv(int val, int i) {
 		this->statb[i] = val;
 	};
-	 
+
 	Entity();
 	~Entity();
 };
