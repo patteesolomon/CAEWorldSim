@@ -1,4 +1,4 @@
-#include "CMakeProject1.h"// I WILL go over CMakeProject1.h libs and get rid of the ones I barely need there and distribute them
+#include "CMakeProject1.h"// TODO: I WILL go over CMakeProject1.h libs and get rid of the ones I barely need there and distribute them
 #include <utility>
 #include <cstdlib>
 #include <memory>
@@ -10,34 +10,37 @@ using namespace std;
 ////
 // // and here I will model out the
 // class hierarchy of inheritance
-// Utils.h,/ EventUtils.h, /TriggerList.h
+// Utils.h, EventUtils.h, TriggerList.h, FILEBASELOADER,
 // \/
-// UFI,/ Entity(TerrainObjs, Actor(Player/Npc either foe or friend character), Enemy(baddie npc), Ally(friend npc not in party)UnitType), / Org(Factions, player organization menu, Communication), Events
-//  |
+// UFI
 // \/
-// WorldGen,/ GameTemp
+// Entity(TerrainObj or base Class)
+// | (containing the integral structs)
+// Enemy(baddie npc), Ally(friend npc not in party)UnitType), Actor(Player/Npc either foe or friend character)
+// \/
+// Org(Factions, player organization menu, Communication), Events
+// \/
+// WorldGen, GameTemp
 //
 //
 ////
-
+#define statDupe[];
+#define gameLoad = 0; 
 template<typename T> T valueUpdater(T val1[], T val2[]) {
-
+	
 };
 
+// this sorts your list from least to greatest
 template<typename T> T turnSort(vector<int> vals)
-{
-	vector<int> last = 0;
-	sort(vals.assign(last), vals.begin(), vals.end(), last < vals);// find a way to add last no comparison
-}
+{ 
+	sort(vals.begin(), vals.end());
+	return vals;
+} 
 
-#define statDupe[];
-
-auto gameStart = 0;
-
-#define gameLoad = 0; 
+unsigned int gameStart = 0; 
 
 bool getGameStart = (static_cast<int>(gameStart) >= 1) || false;
-void setGameStart(auto e) {
+void setGameStart(uint16_t e) {
 	gameStart = (e > 0) || false;
 }
 
@@ -178,7 +181,7 @@ template<typename T> void dijkstrasAlgo(T root, T target)
 }
 
 template<typename T> void eraseElement(vector<int>vec, int q) {
-	vec = { 2, 53, 6, 6 };
+	if (empty(vec)) { vec = { 2, 53, 6, 6 }; }; // loading example
 	vec.erase(
 		remove_if(vec.begin(), vec.end(), q <= 0),
 		vec.end());
