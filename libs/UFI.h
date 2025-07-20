@@ -47,18 +47,40 @@ public:
 	void updateGameData(); // your unique save file for getting all the data specific to it
 	
 	// savers 
-	void gameSave();
+	void gameSave(vector<istream>);
 	void saveEntities();
 	void saveArchs();
 	void saveOrgData(); 
 
 	// declarations
-	void UFI::loadGame() {
+	void UFI::gameSave(vector<istream> argv) {
+		fstream file;
+		int xcells = 0;
+		int ycells = 0; 
+		int yin = 0;
 
-		/*ifstream file("");
-		if (!file) {
-
-		}*/
+		if (!file || !file.is_open()) {
+			cout << "error opening game file" << endl;
+		} 
+		// writing out to the file 
+		file.open("GameData.csv", ios_base::in | ios_base::out | ios_base::app | ios_base::trunc);
+		cout << "Saving Game" << endl;
+		// writing out to file // we gotta sort this one better
+		xcells = argv.capacity;
+		// for every 5 cells we make a new line
+		// ill optimize this later
+		for (int i = 0; xcells > i; i++) {
+			file << argv.at(i) << ", ";
+			yin++;
+			if (yin >= 4)
+			{
+				ycells++;
+				file << argv(i) << endl;
+				yin = 0;
+			}
+		}
+		// when you're done 
+		file.close();
 	}
 
 	void UFI::loadFB() {
@@ -67,7 +89,7 @@ public:
 	void UFI::loadDataBase() {
 	}
 
-	void UFI::gameSave() {
+	void UFI::loadGame() {
 
 	}
 
