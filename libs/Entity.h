@@ -1,7 +1,7 @@
 #pragma once
 #include "Utils.h"
 #include "CMakeProject1.h"  
-
+#include <tuple>
 using namespace std;
 
 class Entity {
@@ -31,6 +31,7 @@ string name = "";
 #define magic[];
 
 #define psionics[];
+
 #pragma endregion
 
 #pragma region enemyReqs
@@ -57,15 +58,61 @@ int statb[15] = {
 // copy inv over to statb
 #pragma endregion
 
-#pragma region item
+// These items need to be made via an api upon update.
+// we'll have some defaults tho
+#pragma region item 
 struct Item
 {
 	string name = "";
 	int quantity = 0;
 	int statbC[]; // the amount of ints that change the statbase
-
 };
 Item inventory[10] = {};
+#pragma endregion
+
+/// you get to pick one and you can't change it /// 
+#pragma region Faction
+enum class Faction {
+	NONE, // your team at the start
+	AdminLord, // Badguys with god powers
+	Dygana, // Same evil digital natives 
+	Uyun,  // Uyu = Uyun -> digital natives that fought the Dygana
+	Byzora, // A human (mostly europeans), alien hybrid interstellar faction
+	Triad,  // TRIAD INFINITY -> the US. metaHumans/Spirits
+	Nijima, // Nijin = Nijima -> asians and everyone who hates the US
+	Kagari, // Kigare = Kagari -> Hikana and Human ninjas 
+	Aegesa, // more baddies from the old world -> The first android/cyborg digital natives
+	Shanar // humans/Tulpas with cosmic powers
+};
+int allyId = 0;
+#pragma endregion
+Faction aFt = static_cast<int>(0); // to change this you'd have to
+// re inst your object which isn't that hard 
+// plus that's better for the stat change 
+// factions give perks
+
+// events that trigger the update system 
+// changing the world around you
+// theres a data sheet for all the defaults
+#pragma region EventType
+enum class EventType {
+	ACTION, // you make this happen
+	UPDATE, // when things effect certain aspects of the world
+	COMBAT,
+	DIALOGUE, 
+	ACTOR // specific character entities 
+};
+#pragma endregion
+
+// this is for responces that are formed from an input based system
+// story dialouge for events and others are in a yaml, a csv
+// and a data set for Eventypes invokable 
+// a gpt queue
+#pragma region ResponceQueue
+
+#pragma endregion
+
+#pragma region 
 #pragma endregion
 
 #pragma region org
@@ -82,49 +129,33 @@ Item inventory[10] = {};
 
 #pragma region TerrainSpace
 
-#pragma endregion
-
-#pragma region Ally
-
-#pragma endregion
+#pragma endregion 
 
 #pragma region Menu
 
-#pragma endregion
-
-#pragma region Faction
-
-#pragma endregion
-
-#pragma region EventType
-
-#pragma endregion
-
-#pragma region ResponceQueue
-
-#pragma endregion
-
-	/// <summary>
-	/// a statBase array that is accessed
-	/// and we use getters and setters
-	/// for what we need.. just put that here
-	/// and add status effects with Hash/Map/Heap/Array/Stack/Queue
-	/// template functions:
-	/// 
-	/// Hash is for embedding effects with lock and key
-	/// maping is for mapping things our for selection
-	/// Heap is for finding parts of funciton and vars to be used later
-	/// Stack is for fifo updates and pulling from the heap
-	/// Queue is for popping off Statuses using updates
-	///
-	/// </summary>
+#pragma endregion 
+  
 	///
 	/// // is this a player
 	bool isPlayer = false;
 
 	char pDid; // unique name and index finder for .yamlfiles
-
+	// a unique id set
+		// if it matches yours or your faction's 
+		// this is an ally 
+		std::tuple<int, int> allegiance(int o, int me) {};
 public:
+	
+	Entity();
+	// basic constructor for objects
+	Entity::Entity() {
+
+	}
+	Entity::Entity(int allyIdSet, Faction type) {
+		this.allegiance = std::make_tuple(allyIdSet, type);
+
+	}  
+
 	enum class elementType
 	{
 		Water = 0,
@@ -138,6 +169,8 @@ public:
 		Dark = 8,
 		Normal = 9
 	};
+	// not every unit type is going to be a combattant
+	// but they'll be important for controlling certian territories
 	enum class unitType {
 		ATYPE,
 		INTEGRITY,
@@ -161,7 +194,7 @@ public:
 	void setStbv(int val, int i) {
 		this->statb[i] = val;
 	};
-
-	Entity();
+	 
+	
 	~Entity();
 };

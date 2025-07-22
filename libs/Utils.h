@@ -24,8 +24,25 @@ using namespace std;
 //
 //
 ////
+
+/// <summary>
+/// a statBase array that is accessed
+/// and we use getters and setters
+/// for what we need.. just put that here
+/// and add status effects with Hash/Map/Heap/Array/Stack/Queue
+/// template functions:
+/// 
+/// Hash is for embedding effects with lock and key
+/// maping is for mapping things our for selection
+/// Heap is for finding parts of funciton and vars to be used later
+/// Stack is for fifo updates and pulling from the heap
+/// Queue is for popping off Statuses using updates
+///
+/// </summary>
+
 #define statDupe[];
 #define gameLoad = 0; 
+
 template<typename T> T valueUpdater(T val1[], T val2[]) {
 	
 };
@@ -60,16 +77,8 @@ struct enable_if {}; // no member "type" when !_Test
 //};
 
 //template <bool _Test, class _Ty = void>
-//using enable_if_t = typename enable_if<_Test, _Ty>::type;
+//using enable_if_t = typename enable_if <_Test, _Ty>::type;
 //
-//template<typename T> void test(T a) {
-//	switch (a)
-//	{
-//	default:
-//		std::cout << "hi" << std::endl;
-//		break;
-//	}
-//} 
 
 /// <summary>
 /// arr gets arrII added to it right from the end.
