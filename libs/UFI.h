@@ -1,6 +1,7 @@
 #pragma once
 #include "CMakeProject1.h"
 #include "Utils.h"
+#include "yaml-cpp/yaml.h"
 #include <fstream>
 #include <sstream>
 using namespace std;
@@ -75,7 +76,7 @@ public:
 		// for every 5 cells we make a new line
 		// ill optimize this later
 		for (int i = 0; xcells > i; i++) {
-			file << i << ' ' << argv.at(i) << ", ";
+			file << i << ' :' << ' ' << argv.at(i) << ", ";
 			yin++;
 			if (yin >= 4)
 			{
@@ -92,6 +93,7 @@ public:
 	} 
 
 	void UFI::loadDataBase() {
+
 	}
 
 	void UFI::loadGame() {

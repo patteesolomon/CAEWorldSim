@@ -86,7 +86,7 @@ enum class Faction {
 };
 int allyId = 0;
 #pragma endregion
-Faction aFt = static_cast<int>(0); // to change this you'd have to
+Faction aFt; // to change this you'd have to
 // re inst your object which isn't that hard 
 // plus that's better for the stat change 
 // factions give perks
@@ -134,7 +134,7 @@ enum class EventType {
 #pragma region Menu
 
 #pragma endregion 
-  
+	std::tuple<int, Faction> allegiance;
 	///
 	/// // is this a player
 	bool isPlayer = false;
@@ -143,19 +143,7 @@ enum class EventType {
 	// a unique id set
 		// if it matches yours or your faction's 
 		// this is an ally 
-		std::tuple<int, int> allegiance(int o, int me) {};
-public:
-	
-	Entity();
-	// basic constructor for objects
-	Entity::Entity() {
-
-	}
-	Entity::Entity(int allyIdSet, Faction type) {
-		this.allegiance = std::make_tuple(allyIdSet, type);
-
-	}  
-
+public: 
 	enum class elementType
 	{
 		Water = 0,
@@ -194,7 +182,9 @@ public:
 	void setStbv(int val, int i) {
 		this->statb[i] = val;
 	};
-	 
+	Entity();
+	Entity(int allyIdSet, Faction type);
+
 	
 	~Entity();
 };
