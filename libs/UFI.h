@@ -1,7 +1,7 @@
 #pragma once
 #include "CMakeProject1.h"
 #include "Utils.h"
-#include "yaml-cpp/yaml.h"
+#include "../libs/yamlBuild/yaml-cppd.lib" // time to ref this the oldschool way
 #include <fstream>
 #include <sstream>
 using namespace std;
