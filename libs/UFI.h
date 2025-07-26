@@ -90,6 +90,7 @@ public:
 	}
 
 	void UFI::loadFB() {
+
 	} 
 
 	void UFI::loadDataBase() {

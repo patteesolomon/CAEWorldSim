@@ -20,24 +20,6 @@ private:
 // actionMod,
 // mapAndNav,
 // menuAndCurrencies ///
-#define stats [];
-
-string name = "";
-
-#define skills[];
-
-#define sts[];
-
-#define magic[];
-
-#define psionics[];
-
-#pragma endregion
-
-#pragma region enemyReqs
-////spawn area
-// area type
-//
 int statb[15] = {
 	0,
 	0,
@@ -55,6 +37,24 @@ int statb[15] = {
 	0,
 	0
 };
+
+string name = "";
+
+int skills[14];
+
+int sts[7];
+
+int magic[7];
+
+int psionics[7];
+
+#pragma endregion
+
+#pragma region enemyReqs
+////spawn area
+// area type
+//
+
 // copy inv over to statb
 #pragma endregion
 
@@ -112,25 +112,49 @@ enum class EventType {
 
 #pragma endregion
 
-#pragma region 
+
+// this is for loading all the graphics
+// and the materials for the game
+#pragma region Materials
 #pragma endregion
 
+
+// faction functions for controlling 
+// the faction itself
 #pragma region org
 
 #pragma endregion
 
+/////
+// this is for the interactable 
+// functions of different entities
+// several of which will be 
+// hardcoded or will run from 
+// an external database
+////
 #pragma region ObjectInteractable
 
 #pragma endregion
 
+////
+// NCNPC : Non combattant non
+// playable character 
+// this is a type and 
+// some vars regarding non battle system
+// related things//
 #pragma region NCNPC
 
 #pragma endregion
-
+//
+// Terrain types and event trigger 
+// attributes as well as flags
+// for events and certain Entities
+// //
 #pragma region TerrainSpace
 
 #pragma endregion 
 
+// Menu //
 #pragma region Menu
 
 #pragma endregion 

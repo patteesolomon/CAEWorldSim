@@ -40,12 +40,29 @@ using namespace std;
 ///
 /// </summary>
 
-#define statDupe[];
-#define gameLoad = 0; 
-
-template<typename T> T valueUpdater(T val1[], T val2[]) {
-	
+/// <summary>
+/// game states that are 
+/// game start = 0
+/// Menu state = 1
+/// In game state = 2
+/// MainMenu = 3
+/// GameOver = 4
+/// 
+/// </summary>
+enum class GameState{
+	GameStart,
+	MenuState,
+	InGame,
+	MainMenu,
+	Loading, // todo: dynamic concurrency
+	Updating, // "                       "
+	Saving, // todo: another thread being safe
+	GameOver // TODO: Destruction
 };
+
+GameState gameState = static_cast<GameState>(0);
+
+int gameLoad = 0; 
 
 // this sorts your list from least to greatest
 template<typename T> T turnSort(vector<int> vals)
@@ -54,11 +71,11 @@ template<typename T> T turnSort(vector<int> vals)
 	return vals;
 } 
 
-unsigned int gameStart = 0; 
+bool gameStarted = (gameState >= static_cast<GameState>(0)) || false;
+GameState getGameState = gameState;
 
-bool getGameStart = (static_cast<int>(gameStart) >= 1) || false;
-void setGameStart(uint16_t e) {
-	gameStart = (e > 0) || false;
+void setGameStart(int e) {
+	gameState = static_cast<GameState>(e);
 }
 
 template <bool _Test, class _Ty = void>
@@ -114,7 +131,22 @@ template<typename T> int capacityCount(T arr[])
 	}
 	return count;
 }
-
+/// <summary>
+/// Val list 1 is updated by list 2
+/// assuming both lists have the same 
+/// capacity. 
+/// </summary>
+/// <typeparam name="T">type</typeparam>
+/// <param name="val1">list 1</param>
+/// <param name="val2">list 2 updater</param>
+/// <returns></returns>
+template<typename T> T valueUpdater(T val1[], T val2[]) {
+	int cap = capacityCount(val2);
+	for (int i = 0; i < cap; i++)
+	{
+		val1[i] = val2[i];
+	}
+};
 template<typename T> struct IsFloatOrDouble
 {
 	
@@ -140,6 +172,7 @@ template<class T>
 class Base
 {
 };
+
 class Derived : public Base<class T>
 {
 	/*void callGCEFC(integer_sequence<int, Is...>,
