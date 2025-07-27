@@ -6,7 +6,7 @@ using namespace std;
 
 class Entity {
 private:
-#pragma region playerRequirements
+#pragma region Requirements
 // These are all structs or props
 // name, 
 // inventory,
@@ -106,12 +106,11 @@ enum class EventType {
 
 // this is for responces that are formed from an input based system
 // story dialouge for events and others are in a yaml, a csv
-// and a data set for Eventypes invokable 
+// and a data set (a table) for Eventypes invokable 
 // a gpt queue
 #pragma region ResponceQueue
 
 #pragma endregion
-
 
 // this is for loading all the graphics
 // and the materials for the game

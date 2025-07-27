@@ -1,8 +1,10 @@
 #include "CMakeProject1.h"// TODO: I WILL go over CMakeProject1.h libs and get rid of the ones I barely need there and distribute them
 #include <utility>
 #include <cstdlib>
-#include <memory>
+#include <memory>  
+
 using namespace std;
+
 //
 // use a closed hashmap when loading game data?
 // or something else

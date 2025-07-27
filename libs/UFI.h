@@ -1,9 +1,11 @@
 #pragma once
 #include "CMakeProject1.h"
 #include "Utils.h"
-#include "../libs/yamlBuild/yaml-cppd.lib" // time to ref this the oldschool way
+//#include "../libs/yamlBuild/yaml-cppd.lib" // vkpkg this one or find another way
 #include <fstream>
 #include <sstream>
+#include <C:\Users\TheSh\OneDrive\Documents\CÆ\CÆ\vcpkg_installed\vcpkg\pkgs\cjson_x64-windows\include\cjson\cJSON.h> 
+#include <nlohmann/json.hpp> // reading and validation, creation 
 using namespace std;
 
 /////
@@ -14,30 +16,28 @@ using namespace std;
 //  and maybe music and images too
 //  use an ai gen for images if you're able to
 // 
-
-// I only need one of these
-// a Singleton
+ 
 class UFI {
 private:
-	static UFI* instance;
-	UFI(); // Private constructor
+	
 public:
+	
+
+	static UFI* instance;
+	UFI();
 	static UFI* getInstance() {
 		if (!instance) {
 			instance = new UFI();
 		}
 		return instance;
 	}
-
-	// reader and writer 
-	fstream file("Database.csv");
-
+	
 	// loaders
 	void loadFB(); // FB = Filebase
 	void loadDataBase(); // loads the ingame database
 	void loadGame(); // loads all of your saved progress and ONLY everything it needs based on this memory context
 	// takes the game data from the game state as is. 
-	vector<istream> getGameData(/*containers here*/); 
+	void getGameData(/*containers here*/);
 
 	// update chunk (only when player moves anywhere or event change)
 	void updateMapCluster(); // a larger version of the function below
@@ -52,49 +52,48 @@ public:
 	void updateOrgDatabase(); // tables for the archetypes are different
 	void updateGameData(); // your unique save file for getting all the data specific to it
 	
+	// generation
+	void generateResponce();
+
 	// savers 
-	void gameSave(vector<istream>);
+	void gameSave(vector<istream> argv);
 	void saveEntities();
 	void saveArchs();
 	void saveOrgData(); 
 
 	// declarations
 	void UFI::gameSave(vector<istream> argv) {
-		fstream file;
 		int xcells = 0;
 		int ycells = 0; 
 		int yin = 0;
-
-		if (!file || !file.is_open()) {
+		// reader and writer 
+		fstream fss("Database.csv", ios::in | ios::out | ios::app | ios::trunc);
+		fstream fs("GameData.csv", ios_base::in | ios_base::out | ios_base::app | ios_base::trunc);
+		if (!this.fss || !fss.is_open()) {
 			cout << "error opening game file" << endl;
 		} 
 		// writing out to the file 
-		file.open("GameData.csv", ios_base::in | ios_base::out | ios_base::app | ios_base::trunc);
 		cout << "Saving Game" << endl;
 		// writing out to file // we gotta sort this one better
 		xcells = argv.capacity;
 		// for every 5 cells we make a new line
 		// ill optimize this later
 		for (int i = 0; xcells > i; i++) {
-			file << i << ' :' << ' ' << argv.at(i) << ", ";
+			fss << i << ' :' << ' ' << argv.at(i) << ", ";
 			yin++;
 			if (yin >= 4)
 			{
 				ycells++;
-				file << argv(i) << endl;
+				fss << argv(i) << endl;
 				yin = 0;
 			}
 		}
 		// when you're done 
-		file.close();
+		fss.close();
 	}
 
-	void UFI::loadFB() {
-
-	} 
-
-	void UFI::loadDataBase() {
-
+	UFI::UFI()
+	{
 	}
 
 	void UFI::loadGame() {
@@ -109,6 +108,15 @@ public:
 		/// the game location and values are sent to an array sent via a switch 
 		/// functions will trigger off*///
 	}
+	 
+	void UFI::generateResponce() {
+		std::ifstream game_data("this.json", std::ifstream::binary);
+		Json::Value gdata;
+		game_data >> gdata;
+		cout << this.gdata;
+		// store this somewhere
+	}
+
 
 	~UFI();
 };
