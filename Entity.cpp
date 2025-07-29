@@ -8,5 +8,4 @@ Entity::Entity() {
 
 Entity::Entity(int allyIdSet, Faction type) {
 	this->allegiance = make_tuple(allyIdSet, type); 
-	
 }

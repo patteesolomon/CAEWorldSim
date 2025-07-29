@@ -8,11 +8,14 @@
 #include "CÆ.h"  
 #include <nlohmann/json.hpp>
 #include "libs/UFI.h"
+#include "UFI.cpp"
 // for convenience
 using json = nlohmann::json; 
-void loadIn() {
-     // a JSON text given as std::vector
-        auto textf = R"({
+
+// keep this for the validation
+static void jsonValidator( ) {
+    // a JSON text given as std::vector
+    auto textf = R"({
             "Image": {
                 "Width":  800,
                 "Height": 600,
@@ -26,31 +29,32 @@ void loadIn() {
                 "IDs": [116, 943, 234, 38793]
             }
         })";
-        std::ifstream file("this.json");
-        nlohmann::json jsonData;
-        // parse and serialize JSON 
-        try {
-            //json j_complete = json::parse(textf); 
-            file >> jsonData;
-            std::cout << "objectData: " << jsonData["object"] << "\n";
-        }
-        catch(const json::parse_error& e){
-            std::cout << e.what() << std::endl;
-        } 
-        json j = json::parse(file, nullptr, false);
-        if (j.is_discarded())
-        {
-            std::cout << "the input is invalid JSON" << std::endl;
-        }
-        else
-        {
-            std::cout << "the input is valid JSON: " << j << std::endl;
-        }
-        std::cout << std::setw(4) << j << "\n\n";
+    std::ifstream file("this.json");
+    nlohmann::json jsonData;
+    // parse and serialize JSON 
+    try {
+        //json j_complete = json::parse(textf); 
+        file >> jsonData;
+        std::cout << "objectData: " << jsonData["object"] << "\n";
+    }
+    catch (const json::parse_error& e) {
+        std::cout << e.what() << std::endl;
+    }
+    json j = json::parse(file, nullptr, false);
+    if (j.is_discarded())
+    {
+        std::cout << "the input is invalid JSON" << std::endl;
+    }
+    else
+    {
+        std::cout << "the input is valid JSON: " << j << std::endl;
+    }
+    std::cout << std::setw(4) << j << "\n\n";
 }
 int main()
 { 
     UFI ie = UFI();
-    ie.generateResponce();
+    ie.saveResponce();
+    jsonValidator();
 	return 0;
 }
