@@ -21,8 +21,7 @@ class UFI {
 private:
 	
 public:
-	
-
+	 
 	static UFI* instance;
 	UFI();
 	static UFI* getInstance() {
@@ -53,70 +52,13 @@ public:
 	void updateGameData(); // your unique save file for getting all the data specific to it
 	
 	// generation
-	void generateResponce();
+
 
 	// savers 
-	void gameSave(vector<istream> argv);
+	void gameSave();
 	void saveEntities();
 	void saveArchs();
 	void saveOrgData(); 
-
-	// declarations
-	void UFI::gameSave(vector<istream> argv) {
-		int xcells = 0;
-		int ycells = 0; 
-		int yin = 0;
-		// reader and writer 
-		fstream fss("Database.csv", ios::in | ios::out | ios::app | ios::trunc);
-		fstream fs("GameData.csv", ios_base::in | ios_base::out | ios_base::app | ios_base::trunc);
-		if (!this.fss || !fss.is_open()) {
-			cout << "error opening game file" << endl;
-		} 
-		// writing out to the file 
-		cout << "Saving Game" << endl;
-		// writing out to file // we gotta sort this one better
-		xcells = argv.capacity;
-		// for every 5 cells we make a new line
-		// ill optimize this later
-		for (int i = 0; xcells > i; i++) {
-			fss << i << ' :' << ' ' << argv.at(i) << ", ";
-			yin++;
-			if (yin >= 4)
-			{
-				ycells++;
-				fss << argv(i) << endl;
-				yin = 0;
-			}
-		}
-		// when you're done 
-		fss.close();
-	}
-
-	UFI::UFI()
-	{
-	}
-
-	void UFI::loadGame() {
-		fstream j;
-		int fileElements = 0;
-		j.open("GameData.csv", ios_base::in | ios_base::out | ios_base::app | ios_base::trunc);
-		auto &l = j.read();
-
-		/// enum for the different parts of the row goes here..
-		///*
-		/// asserting values to the game data game object
-		/// the game location and values are sent to an array sent via a switch 
-		/// functions will trigger off*///
-	}
-	 
-	void UFI::generateResponce() {
-		std::ifstream game_data("this.json", std::ifstream::binary);
-		Json::Value gdata;
-		game_data >> gdata;
-		cout << this.gdata;
-		// store this somewhere
-	}
-
-
+	void saveResponce();
 	~UFI();
 };
